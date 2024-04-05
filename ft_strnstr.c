@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:13:30 by arnaud            #+#    #+#             */
-/*   Updated: 2023/10/18 13:45:30 by arnaud           ###   ########.fr       */
+/*   Updated: 2024/04/05 20:16:57 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	size_t	to_find_len;
 	size_t	i;
 
+	if (!str || !to_find)
+		return (NULL);
 	i = 0;
 	to_find_len = ft_strlen(to_find);
 	if (to_find_len == 0)

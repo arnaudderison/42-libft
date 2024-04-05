@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+         #
+#    By: aderison <aderison@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 22:41:49 by arnaud            #+#    #+#              #
-#    Updated: 2023/12/14 18:45:30 by arnaud           ###   ########.fr        #
+#    Updated: 2024/04/05 19:26:24 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ OBJS = ${SRCS:.c=.o}
 
 OBJSBONUS = ${BONUS:.c=.o}
 
-.c.o:
+%.o: %.c
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
