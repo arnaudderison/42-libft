@@ -3,19 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aderison <aderison@student.42.fr>          +#+  +:+       +#+         #
+#    By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/29 22:41:49 by arnaud            #+#    #+#              #
-#    Updated: 2024/04/05 19:26:24 by aderison         ###   ########.fr        #
+#    Created: 2023/12/16 12:25:14 by arnaud            #+#    #+#              #
+#    Updated: 2023/12/21 14:18:53 by arnaud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
-CC		= gcc
-RM		= rm -f
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = 	ft_isdigit.c \
+
+# Colors
+RED=\033[0;31m
+GREEN=\033[0;32m
+YELLOW=\033[1;33m
+CYAN=\033[0;36m
+NC=\033[0m
+
+# Libft sources
+LIBFT_SRCS = ft_isdigit.c \
 		ft_memset.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
@@ -49,36 +56,35 @@ SRCS = 	ft_isdigit.c \
 		ft_strdup.c \
 		ft_strrchr.c \
 		ft_striteri.c
+LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 
-BONUS = ft_lstnew_bonus.c \
-		ft_lstadd_front_bonus.c \
-		ft_lstlast_bonus.c \
-		ft_lstsize_bonus.c \
-		ft_lstadd_back_bonus.c \
-		ft_lstdelone_bonus.c \
-		ft_lstclear_bonus.c \
-		ft_lstiter_bonus.c \
-		ft_lstmap_bonus.c 
+# Libft sources
+LIBFT_BONUS_SRCS = $(wildcard *bonus.c)
+LIBFT_BONUS_OBJS = $(LIBFT_BONUS_SRCS:.c=.o)
 
-OBJS = ${SRCS:.c=.o}
+# Compilation rules
+all: $(NAME)
 
-OBJSBONUS = ${BONUS:.c=.o}
+$(NAME): $(LIBFT_OBJS)
+	@ar rcs $(NAME) $^
+	@echo "${YELLOW}Library $(NAME) created.${NC}"
+
+bonus: $(LIBFT_OBJS) $(LIBFT_BONUS_OBJS)
+	@ar rcs $(NAME) $^
+	@echo "${YELLOW}Library $(NAME) created with bonus.${NC}"
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
-$(NAME): ${OBJS}
-	ar rcs ${NAME} ${OBJS}
-
-bonus:	${OBJS} ${OBJSBONUS}
-	ar rcs ${NAME} ${OBJS} ${OBJSBONUS}
-
-all:	${NAME}
+	@echo "${CYAN}Compiling $<...${NC}"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	${RM} ${OBJS} ${OBJSBONUS}
+	@rm -f $(LIBFT_OBJS) $(LIBFT_BONUS_OBJS)
+	@echo "${GREEN}Object files cleaned.${NC}"
 
-fclean:	clean
-	${RM} ${NAME}
+fclean: clean
+	@rm -f $(NAME)
+	@echo "${RED}All files removed.${NC}"
 
 re: fclean all
+
+.PHONY: all clean fclean re
