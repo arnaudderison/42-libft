@@ -6,13 +6,15 @@
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 08:56:04 by arnaud            #+#    #+#             */
-/*   Updated: 2024/04/05 20:37:41 by aderison         ###   ########.fr       */
+/*   Updated: 2024/04/10 14:04:25 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	if (!s)
 		return (0);
