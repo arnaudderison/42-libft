@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+         #
+#    By: aderison <aderison@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/16 12:25:14 by arnaud            #+#    #+#              #
-#    Updated: 2023/12/21 14:18:53 by arnaud           ###   ########.fr        #
+#    Updated: 2024/04/10 14:16:13 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,18 @@ LIBFT_SRCS = ft_isdigit.c \
 		ft_strdup.c \
 		ft_strrchr.c \
 		ft_striteri.c
-LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
-
+		
 # Libft sources
-LIBFT_BONUS_SRCS = $(wildcard *bonus.c)
+LIBFT_BONUS_SRCS = ft_lstnew_bonus.c \
+		ft_lstadd_front_bonus.c \
+		ft_lstlast_bonus.c \
+		ft_lstsize_bonus.c \
+		ft_lstadd_back_bonus.c \
+		ft_lstdelone_bonus.c \
+		ft_lstclear_bonus.c \
+		ft_lstiter_bonus.c \
+		ft_lstmap_bonus.c
+		
 LIBFT_BONUS_OBJS = $(LIBFT_BONUS_SRCS:.c=.o)
 
 # Compilation rules
